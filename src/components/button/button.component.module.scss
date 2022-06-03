@@ -1,0 +1,57 @@
+.button {
+    margin-top: 10px;
+    height: 32px;
+    position: relative;
+    width: calc(100% - 5px);
+    margin-left: 5px;
+
+    &__btn {
+        position: absolute;
+        height: 32px;
+        width: 100%;
+        border-radius: 0;
+        outline: none;
+        background-color: white;
+        border: none;
+        top: -5px;
+        left: -5px;
+        cursor: pointer;
+        
+
+        transition: top 0.1s ease, left 0.1s ease;
+
+        font-size: 24px;
+
+        &:hover {
+            top: -3px;
+            left: -3px;
+        }
+
+        &:active {
+            top: 0;
+            left: 0;
+        }
+    }
+
+    &__btnSec {
+        position: absolute;
+        height: 32px;
+        width: 100%;
+        border-radius: 0;
+        outline: none;
+        border: none;
+        font-size: 24px;
+        border: 2px solid black;
+        margin-top: 0px;
+        background: none;
+        cursor: pointer;
+    }
+
+    &__shadow {
+        background-color: black;
+        content: '';
+        width: 100%;
+        height: 100%;
+
+    }
+}

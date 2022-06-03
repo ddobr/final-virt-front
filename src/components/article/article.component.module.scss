@@ -1,0 +1,29 @@
+@use '../../index.scss' as styles;
+
+.article {
+    width: 100%;
+    position: relative;
+    color: styles.$text-color;
+
+    background-color: styles.$main-dark;
+    font-size: 32px;
+
+    box-sizing: border-box;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+
+    &__id {
+        user-select: none;
+        cursor: pointer;
+        border: 1px solid white;
+        font-size: 12px;
+        text-align: center;
+    }
+
+    &__date {
+        margin-top: 10px;
+        display: block;
+        text-align: end;
+        font-size: 12px;
+    }
+}

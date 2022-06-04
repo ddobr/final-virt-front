@@ -37,6 +37,7 @@ export const Article: React.FC<Props> = ({
                 isHovered && <>DELETE???</>
             }
         </pre>
+        { article.imgSrc && <img className={styles.article__img} src={article.imgSrc} alt={''}/>}
         <div dangerouslySetInnerHTML={{
             __html: article.text.replace(/(http[s]?:\/\/[^\s]+)/g, "<a href='$1'>$1</a>")
         }} />

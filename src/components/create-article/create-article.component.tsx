@@ -13,6 +13,7 @@ export const CreateArticle: React.FC<Props> = ({
 
     const [text, setText] = useState('');
     const textarea = useRef<HTMLTextAreaElement>(null);
+    const fileUploader = useRef<HTMLInputElement>(null);
 
     const typeHandler = useCallback((e: React.FormEvent<HTMLTextAreaElement>) => {
         setText((e.nativeEvent.target as any).value);
@@ -23,13 +24,18 @@ export const CreateArticle: React.FC<Props> = ({
     
     const resetHandler = useCallback(() => {
         textarea.current!.value = '';
+        fileUploader.current!.value = '';
         setText('');
     }, []);
 
     const submitHandler = useCallback(() => {
-        api.createArticle({
-            text
-        }).then(() => {
+        let file: File | undefined = undefined;
+
+        if (fileUploader.current?.files?.[0]) {
+            file = fileUploader.current.files[0]
+        }
+
+        api.createArticle(text, file).then(() => {
             onSubmit && onSubmit(text);
         });
 
@@ -39,6 +45,7 @@ export const CreateArticle: React.FC<Props> = ({
     return <div className={styles.createArticle}>
         <pre><h1>NEW POST 🍌</h1></pre>
         <textarea ref={textarea} onInput={(e) => typeHandler(e)} placeholder='Type something...' className={styles.createArticle__textarea} />
+        <input ref={fileUploader} type={'file'} accept='.img,.png'/>
         <div className={styles.createArticle__buttons}>
             <Button onClick={submitHandler} text='Submit' />
             <Button onClick={resetHandler} text='Reset' secondary/>

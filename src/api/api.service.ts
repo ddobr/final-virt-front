@@ -3,7 +3,7 @@ import { IArticleDto } from "./models/article.dto";
 
 class ApiService {
     private _server = axios.create({
-        baseURL: process.env.REACT_APP_URL
+        baseURL: `http://${process.env.REACT_APP_URL}`
     });
 
     public getAllArticles(): Promise<IArticleDto[]> {
